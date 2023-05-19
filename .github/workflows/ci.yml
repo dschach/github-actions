@@ -9,4 +9,4 @@ on:
 # Jobs to be executed
 jobs:
   format-check:
-    uses: dschach/github-actions/workflows/on-push.yml@feature/on-push
+    uses: dschach/github-actions/workflows/on-push.yml@feature-on-push

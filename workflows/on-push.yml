@@ -2,6 +2,11 @@ name: Verify Formatting
 
 on:
   workflow_call:
+  workflow_dispatch:
+  outputs:
+    prettier-exitcode:
+      description: 'Prettier exit code'
+      value: ${{ jobs.format-check.outputs.exitcode }}
 
 jobs:
   format-check:
