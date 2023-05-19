@@ -26,4 +26,4 @@ jobs:
       # Prettier formatting
       - name: 'Code formatting verification with Prettier'
         id: run-verify
-        run: prettier --list-different "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}"
+        run: npx prettier --list-different "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}"
