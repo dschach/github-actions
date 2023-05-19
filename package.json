@@ -1,0 +1,33 @@
+{
+	"name": "dschach-github-actions",
+	"private": true,
+	"version": "0.0.0",
+	"description": "Reusable GitHub Actions for all repositories to use in centralized location.",
+	"scripts": {
+		"pmd:scan:csv": "$HOME/pmd/bin/pmd check --dir / --format csv --report-file pmd/pmd.csv --cache .pmdCache",
+		"precommit": "lint-staged",
+		"prepare": "husky install",
+		"prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
+		"prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
+		"release:preview": "release-please release-pr --token=$GITHUB_TOKEN --repo-url=dschach/github-actions --dry-run --debug --target-branch=main"
+	},
+	"devDependencies": {
+		"@prettier/plugin-xml": "^2.2.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.2",
+		"marked": "^5.0.2",
+		"prettier": "^2.8.8",
+		"release-please": "^15.10.4"
+	},
+	"lint-staged": {
+		"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml}": [
+			"prettier --write"
+		],
+		"docs/assets/*.css": [
+			"prettier --write"
+		],
+		"docs/*.html": [
+			"prettier --write --tab-width 2"
+		]
+	}
+}
