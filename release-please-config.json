@@ -9,7 +9,6 @@
 			"prerelease": true
 		}
 	},
-
 	"changelog-path": "CHANGELOG.md",
 	"include-v-in-tag": true,
 	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
