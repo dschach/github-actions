@@ -21,6 +21,7 @@ jobs:
 
       # Cache node_modules to speed up the process
       - name: 'Restore node_modules cache'
+        if: !always()
         id: cache-npm
         uses: actions/cache@v3
         with:
@@ -31,7 +32,7 @@ jobs:
             npm-
       # Install npm dependencies for Prettier and Jest
       - name: 'Install npm dependencies'
-        if: steps.cache-npm.outputs.cache-hit != 'true'
+        #if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
 
       # Prettier formatting
