@@ -20,11 +20,8 @@
 		"release-please": "^15.10.4"
 	},
 	"lint-staged": {
-		"sfdx-source/**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml}": [
+		"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml}": [
 			"prettier --write"
-		],
-		"sfdx-source/**/{aura,lwc}/**": [
-			"eslint"
 		],
 		"docs/assets/*.css": [
 			"prettier --write"
