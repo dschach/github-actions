@@ -9,7 +9,7 @@
 		"prepare": "husky install",
 		"prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
 		"prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-		"release:preview": "release-please release-pr --token=$GITHUB_TOKEN --repo-url=dschach/QuoteCustomSync --dry-run --debug --target-branch=main"
+		"release:preview": "release-please release-pr --token=$GITHUB_TOKEN --repo-url=dschach/github-actions --dry-run --debug --target-branch=main"
 	},
 	"devDependencies": {
 		"@prettier/plugin-xml": "^2.2.0",
