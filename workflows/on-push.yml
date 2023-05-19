@@ -6,7 +6,7 @@ on:
   outputs:
     prettier-exitcode:
       description: 'Prettier exit code'
-      value: ${{ jobs.format-check.outputs.exitcode }}
+      value: ${{ jobs.format-check.outputs.prettier-code }}
 
 jobs:
   format-check:
