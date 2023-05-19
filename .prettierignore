@@ -22,3 +22,4 @@ pmd/
 # Exclude project config
 sfdx-project.json
 dependencies.json
+CHANGELOG.md
