@@ -10,3 +10,11 @@ on:
 jobs:
   format-check:
     uses: ./.github/workflows/prettier-verify.yml
+
+  release-please:
+    if: github.ref_name == 'main' && github.ref_type == 'branch'
+    needs: format-check
+    uses: ./.github/workflows/release-please-reusable.yml
+    with:
+      release-type: salesforce
+    secrets: inherit

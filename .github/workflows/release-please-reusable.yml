@@ -1,0 +1,22 @@
+name: release-please
+on:
+  workflow_call:
+    inputs:
+      release-type:
+        required: true
+        type: string
+    secrets:
+      release-token:
+        required: true
+
+jobs:
+  release-please:
+    name: Release Please
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          command: manifest
+          token: ${{ secrets.release-token }}
+          release-type: ${{ inputs.release-type }}
+          default-branch: main
