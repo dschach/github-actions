@@ -1,0 +1,29 @@
+name: Verify Formatting
+
+on:
+  workflow_call:
+    outputs:
+      prettier-exitcode:
+        description: 'Prettier exit code'
+        value: ${{ jobs.format-check.outputs.prettier-code }}
+  workflow_dispatch:
+
+jobs:
+  format-check:
+    name: Prettier Verify
+    runs-on: ubuntu-latest
+    outputs:
+      prettier-code: ${{ steps.run-verify.outputs.exitcode }}
+    steps:
+      # Checkout the source code
+      - name: 'Checkout source code'
+        uses: actions/checkout@v3
+
+      # Install npm dependencies for Prettier and Jest
+      - name: 'Install npm dependencies'
+        run: npm install prettier --save-dev
+
+      # Prettier formatting
+      - name: 'Code formatting verification with Prettier'
+        id: run-verify
+        run: npx prettier --list-different "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}"
