@@ -17,4 +17,6 @@ jobs:
     uses: ./.github/workflows/release-please.yml
     with:
       release-type: salesforce
-    secrets: inherit
+      the-branch: main
+    secrets:
+      release-token: ${{ secrets.RELEASE_TOKEN }}

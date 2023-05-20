@@ -5,9 +5,16 @@ on:
       release-type:
         required: true
         type: string
+        default: 'salesforce'
+      the-branch:
+        required: true
+        type: string
+        description: 'The branch used for this release'
+        default: 'main'
     secrets:
       release-token:
         required: true
+        description: 'The access token so Release Please can work'
 
 jobs:
   release-please:
@@ -19,4 +26,4 @@ jobs:
           command: manifest
           token: ${{ secrets.release-token }}
           release-type: ${{ inputs.release-type }}
-          default-branch: main
+          default-branch: ${{ inputs.the-branch }}
