@@ -1,0 +1,52 @@
+name: Lint LWC, Aura and Test
+
+on:
+  workflow_call:
+    secrets:
+      codecov-token:
+        required: false
+  workflow_dispatch:
+
+jobs:
+  format-lint-lwc-tests:
+    name: Lint LWC, Aura and Test
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the source code
+      - name: 'Checkout source code'
+        uses: actions/checkout@v3
+
+      # Install Volta to enforce proper node and package manager versions
+      - name: 'Install Volta'
+        uses: volta-cli/action@v4
+
+      # Cache node_modules to speed up the process
+      - name: 'Restore node_modules cache'
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ env.cache-name }}-
+            npm-
+
+      # Install npm dependencies for Prettier and Jest
+      - name: 'Install npm dependencies'
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm ci
+
+      # Lint LWC / Aura
+      - name: 'Lint Lightning Web Components / Aura Components'
+        run: npm run lint
+
+      # LWC unit tests
+      - name: 'Unit test Lightning Web Components'
+        run: npm run test:unit:coverage
+
+      # Upload code coverage data
+      - name: 'Upload code coverage for LWC to Codecov.io'
+        uses: codecov/codecov-action@v3
+        with:
+          flags: LWC
+          token: ${{ secrets.CODECOV_TOKEN }}${{ secrets.codecov-token }}
