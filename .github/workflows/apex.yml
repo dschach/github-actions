@@ -1,0 +1,91 @@
+name: Scratch Org and Apex Test
+
+on:
+  workflow_call:
+    secrets:
+      codecov-token:
+        required: false
+      devhub-sfdx-url:
+        required: true
+    inputs:
+      name-space:
+        required: false
+        type: string
+      deploy-directory:
+        required: false
+        type: string
+        description: 'Directory to deploy. Default is force-app. Multiple directories should be separated by spaces.'
+        default: 'force-app'
+  workflow_dispatch:
+
+jobs:
+  scratch-org-apex-tests:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    steps:
+      # Checkout the source code
+      - name: 'Checkout source code'
+        uses: actions/checkout@v3
+
+      # Install Salesforce CLI
+      - name: 'Install Salesforce sfdx CLI'
+        run: |
+          npm install sfdx-cli --location=global
+          nodeInstallPath=$(npm config get prefix)
+          echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+          sfdx --version
+
+      - name: 'Install Salesforce sf CLI'
+        run: |
+          npm install @salesforce/cli --global
+          sf --version
+
+      # Store secret for dev hub
+      - name: 'Populate auth file with DEVHUB_SFDX_URL secret'
+        shell: bash
+        run: |
+          echo ${{ secrets.devhub-sfdx-url}} > ./DEVHUB_SFDX_URL.txt
+          secretFileSize=$(wc -c "./DEVHUB_SFDX_URL.txt" | awk '{print $1}')
+          if [ $secretFileSize == 1 ]; then
+              echo "Missing DEVHUB_SFDX_URL secret. Is this workflow running on a fork?";
+              exit 1;
+          fi
+      # Authenticate dev hub
+      - name: 'Authenticate Dev Hub'
+        run: sf org login sfdx-url --sfdx-url-file ./DEVHUB_SFDX_URL.txt --alias devhub --set-default-dev-hub
+
+      # Add namespace to project config
+      - name: Add namespace to project config
+        run: |
+          sed -i 's,"namespace": "","namespace": "${{ inputs.name-space }}",' sfdx-project.json
+
+      # Create scratch org
+      - name: 'Create scratch org'
+        run: sf org create scratch --definition-file config/project-scratch-def.json --alias ScratchOrg --set-default --no-ancestors --duration-days 1 --wait 20 --target-dev-hub devhub
+
+      # Deploy source to scratch org
+      - name: 'Push source to scratch org'
+        run: |
+          DEPLOY_DIRECTORY=${{ inputs.deploy-directory }}
+          sf project deploy start --source-dir ${DEPLOY_DIRECTORY:-"force-app"}
+
+      # Run Apex tests in scratch org
+      - name: 'Run Apex tests'
+        run: sf apex run test --code-coverage --detailed-coverage --result-format human --wait 20 --test-level RunLocalTests --output-dir ./
+
+      # Upload code coverage to Codecov.io
+      - name: 'Upload code coverage for Apex to Codecov.io'
+        uses: codecov/codecov-action@v3
+        with:
+          flags: Apex
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      # Housekeeping
+      - name: 'Delete scratch org'
+        if: always()
+        run: sf org delete scratch --no-prompt --target-org ScratchOrg
+
+      # Remove namespace from project config
+      - name: Remove namespace from project config
+        run: |
+          sed -i 's,"namespace": "${{ inputs.name-space }}","namespace": "",' sfdx-project.json
