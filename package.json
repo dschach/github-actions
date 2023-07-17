@@ -12,7 +12,7 @@
 		"release:preview": "release-please release-pr --token=$GITHUB_TOKEN --repo-url=dschach/github-actions --dry-run --debug --target-branch=main"
 	},
 	"devDependencies": {
-		"@prettier/plugin-xml": "^3.1.0",
+		"@prettier/plugin-xml": "^3.1.1",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.3",
 		"marked": "^5.1.1",
