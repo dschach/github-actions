@@ -17,7 +17,7 @@
 		"lint-staged": "^14.0.1",
 		"marked": "^9.1.0",
 		"prettier": "^3.0.3",
-		"release-please": "^15.13.0"
+		"release-please": "^16.0.0"
 	},
 	"lint-staged": {
 		"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml}": [
