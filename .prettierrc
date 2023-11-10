@@ -8,26 +8,12 @@
 	"bracketSameLine": true,
 	"overrides": [
 		{
-			"files": "**/lwc/**/*.html",
-			"options": { "parser": "lwc" }
-		},
-		{
-			"files": "*.{cmp,page,component}",
-			"options": { "parser": "html" }
-		},
-		{
 			"files": "*.{yml,yaml}",
-			"options": { "tabWidth": 2, "useTabs": false }
+			"options": { "tabWidth": 2, "useTabs": false, "singleQuote": true }
 		},
 		{
-			"files": "docs/*.html",
-			"options": {
-				"parser": "html",
-				"useTabs": false,
-				"printWidth": 150,
-				"htmlWhitespaceSensitivity": "css",
-				"singleQuote": false
-			}
+			"files": ".prettierrc",
+			"options": { "parser": "json" }
 		}
 	]
 }
