@@ -1,0 +1,80 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+	"schedule": [],
+	"timezone": "America/Los_Angeles",
+	//"automergeType": "pr",
+	"commitMessageLowerCase": "never",
+	"dependencyDashboard": true,
+	"description": "Custom renovate rules for @dschach",
+	"enabledManagers": ["github-actions", "npm"],
+	"extends": ["config:recommended", ":semanticCommits"],
+	"separateMinorPatch": false,
+	"github-actions": {
+		"automergeType": "branch",
+		"fileMatch": [
+			"^(workflow-templates|\\.(?:github|gitea|forgejo)/workflows)/[^/]+\\.ya?ml$",
+			"(^|/)action\\.ya?ml$"
+		]
+	},
+	"pre-commit": {
+		"enabled": true
+	},
+	"vulnerabilityAlerts": {
+		"enabled": true
+	},
+	/* "major": {
+		"automerge": false,
+		"autoApprove": false
+	},
+	"minor": {
+		"autoApprove": true,
+		"automerge": true
+	},
+	"patch": {
+		"autoApprove": true,
+		"automerge": true
+	}, */
+	"lockFileMaintenance": {
+		"enabled": true,
+		"automerge": true
+	},
+	"packageRules": [
+		{
+			"description": "all minor/patch updates",
+			"automerge": true,
+			"autoApprove": true,
+			"matchCurrentVersion": ">= 1.0.0",
+			"matchUpdateTypes": ["minor", "patch"]
+		},
+		{
+			"commitMessagePrefix": "deps({{depName}}",
+			"description": "npm dependencies (rare)",
+			"matchManagers": ["npm", "yarn"],
+			"matchDepTypes": ["dependencies"]
+		},
+		{
+			"commitMessagePrefix": "build({{depName}}",
+			"description": "npm devDependencies",
+			"matchManagers": ["npm", "yarn"],
+			"matchDepTypes": ["devDependencies", "optionalDependencies"]
+		},
+		{
+			"commitMessagePrefix": "ci({{depName}}",
+			"description": "All Github updates",
+			"matchManagers": ["github-actions"]
+		},
+		{
+			"description": "Github minor/patch updates",
+			"matchCurrentVersion": ">= 1.0.0",
+			"matchManagers": ["github-actions"],
+			"matchUpdateTypes": ["minor", "patch"]
+		},
+		{
+			"description": "Github major updates",
+			"matchCurrentVersion": ">= 1.0.0",
+			"matchManagers": ["github-actions"],
+			"matchUpdateTypes": ["major"]
+		}
+	]
+}

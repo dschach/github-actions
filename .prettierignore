@@ -6,6 +6,7 @@
 !**/staticresources/*.js
 .localdevserver
 .sfdx
+.sf
 .vscode
 
 scripts/soql/**

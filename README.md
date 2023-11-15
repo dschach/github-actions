@@ -39,3 +39,7 @@ Events and Actions
 # Extras
 
 - SFDX Scanner (runs on PR only)
+
+# Configs
+
+- Renovate [shareable config file](.github/renovate.json5)

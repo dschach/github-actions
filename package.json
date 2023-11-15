@@ -9,24 +9,20 @@
 		"prepare": "husky install",
 		"prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
 		"prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-		"release:preview": "release-please release-pr --token=$GITHUB_TOKEN --repo-url=dschach/github-actions --dry-run --debug --target-branch=main"
+		"release:preview": "release-please release-pr --token=$GITHUB_TOKEN --repo-url=dschach/github-actions --dry-run --debug --target-branch=main",
+		"renovate:validate": "npx renovate-config-validator"
 	},
 	"devDependencies": {
 		"@prettier/plugin-xml": "^3.2.2",
 		"husky": "^8.0.3",
 		"lint-staged": "^15.1.0",
 		"marked": "^10.0.0",
-		"prettier": "^3.1.0"
+		"prettier": "^3.1.0",
+		"renovate": "^37.59.8"
 	},
 	"lint-staged": {
 		"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml}": [
 			"prettier --write"
-		],
-		"docs/assets/*.css": [
-			"prettier --write"
-		],
-		"docs/*.html": [
-			"prettier --write --tab-width 2"
 		]
 	}
 }

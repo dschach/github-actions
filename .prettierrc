@@ -11,9 +11,19 @@
 			"files": "*.{yml,yaml}",
 			"options": { "tabWidth": 2, "useTabs": false, "singleQuote": true }
 		},
+		{ "files": "*.json", "options": { "printWidth": 80 } },
+		{
+			"files": "*.json5",
+			"options": {
+				"printWidth": 80,
+				"parser": "json5",
+				"quoteProps": "preserve",
+				"singleQuote": false
+			}
+		},
 		{
 			"files": ".prettierrc",
-			"options": { "parser": "json" }
+			"options": { "parser": "json", "printWidth": 80 }
 		}
 	]
 }
