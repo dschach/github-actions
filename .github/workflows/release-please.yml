@@ -3,11 +3,11 @@ on:
   workflow_call:
     inputs:
       release-type:
-        required: true
+        required: false
         type: string
-        default: 'salesforce'
+        default: 'sfdx'
       the-branch:
-        required: true
+        required: false
         type: string
         description: 'The branch used for this release'
         default: 'main'

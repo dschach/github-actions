@@ -16,7 +16,7 @@ jobs:
     needs: format-check
     uses: ./.github/workflows/release-please.yml
     with:
-      release-type: salesforce
+      release-type: sfdx
       the-branch: main
     secrets:
       release-token: ${{ secrets.RELEASE_TOKEN }}
