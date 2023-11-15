@@ -48,7 +48,7 @@
 			"matchUpdateTypes": ["minor", "patch"]
 		},
 		{
-			"commitMessagePrefix": "deps({{depName}}",
+			"commitMessagePrefix": "deps({{depName}})",
 			"description": "npm dependencies (rare)",
 			"matchManagers": ["npm"],
 			"matchDepTypes": ["dependencies"]
