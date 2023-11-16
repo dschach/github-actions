@@ -9,13 +9,13 @@ on:
 # Jobs to be executed
 jobs:
   format-check:
-    uses: ./.github/actions/prettier-verify.yml
+    uses: ./.github/workflows/prettier-verify.yml
 
   release-please:
     # runs only on push - not on workflow-dispatch
     if: github.ref_name == 'main' && github.ref_type == 'branch'
     needs: format-check
-    uses: ./.github/actions/release-please.yml
+    uses: ./.github/workflows/release-please.yml
     with:
       release-type: sfdx
       the-branch: main
