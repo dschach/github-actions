@@ -67,7 +67,7 @@ jobs:
       - name: 'Push source to scratch org'
         run: |
           DEPLOY_DIRECTORY=${{ inputs.deploy-directory }}
-          sf project deploy start --source-dir ${DEPLOY_DIRECTORY:-"force-app"}
+          sf project deploy start --source-dir ${DEPLOY_DIRECTORY}
 
       # Run Apex tests in scratch org
       - name: 'Run Apex tests'
@@ -78,7 +78,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           flags: Apex
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.codecov-token }}
 
       # Housekeeping
       - name: 'Delete scratch org'
