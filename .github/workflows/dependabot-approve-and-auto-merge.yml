@@ -1,5 +1,5 @@
 name: Dependabot Pull Request Approve and Merge
-on: pull_request #_target
+on: pull_request_target
 permissions:
   pull-requests: write
   contents: write
@@ -50,9 +50,11 @@ jobs:
       - name: 'Fetch Dependabot metadata'
         id: dependabot
         uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: 'Check auto merge conditions'
-        id: auto-merge
+        id: auto-merge-check
         if: |
           (
             steps.dependabot.outputs.update-type == 'version-update:semver-patch' &&
@@ -61,12 +63,22 @@ jobs:
             contains('version-update:semver-minor,version-update:semver-patch', steps.dependabot.outputs.update-type) &&
             contains('direct:development,indirect:development', steps.dependabot.outputs.dependency-type)
           )
-        run: echo "::notice ::auto-merge conditions satisfied"
-
-      - name: 'Approve and merge PR'
-        if: ${{ steps.auto-merge.conclusion == 'success' }}
+        run: echo "::notice ::auto-merge-check conditions satisfied"
+      - name: Approve a PR if not already approved
+        if: ${{ steps.auto-merge-check.conclusion == 'success' }}
         run: |
-          gh pr review --approve "$PR_URL"
+          gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
+          if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
+          then gh pr review --approve "$PR_URL"
+          else echo "PR already approved, skipping additional approvals to minimize emails/notification noise.";
+          fi
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PR_URL: ${{github.event.pull_request.html_url}}
+      - name: 'Approve and merge PR'
+        if: ${{ steps.auto-merge-check.conclusion == 'success' }}
+        run: |
+          #gh pr review --approve "$PR_URL"
           gh pr merge --auto --squash "$PR_URL"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
