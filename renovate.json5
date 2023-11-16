@@ -1,15 +1,16 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"description": "Custom renovate rules for @dschach",
+	"extends": ["config:best-practices", ":semanticCommits"],
 	"schedule": [],
 	"timezone": "America/Los_Angeles",
 	"configMigration": true,
 	"automergeType": "pr",
 	"commitMessageLowerCase": "never",
+	"rangeStrategy": "bump",
 	"commitBodyTable": true,
 	"semanticCommits": "enabled",
 	"dependencyDashboard": true,
-	"extends": ["config:best-practices", ":semanticCommits"],
 	"separateMinorPatch": false,
 	"github-actions": {
 		"description": "All Github updates",
