@@ -7,7 +7,7 @@
 	"commitMessageLowerCase": "never",
 	"dependencyDashboard": true,
 	"description": "Custom renovate rules for @dschach",
-	"extends": ["config:recommended", ":semanticCommits"],
+	"extends": ["config:base", ":semanticCommits"],
 	"separateMinorPatch": false,
 	"github-actions": {
 		"automergeType": "branch",
