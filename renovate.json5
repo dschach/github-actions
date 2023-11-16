@@ -79,6 +79,12 @@
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
 			"matchUpdateTypes": ["major"]
+		},
+		{
+			"description": "Github action version pinning",
+			"matchManagers": ["github-actions"],
+			"matchUpdateTypes": ["pin", "pinDigest"],
+			"semanticCommitScope": "github-actions"
 		}
 	]
 }
