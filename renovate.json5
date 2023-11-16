@@ -3,11 +3,10 @@
 
 	"schedule": [],
 	"timezone": "America/Los_Angeles",
-	//"automergeType": "pr",
+	"automergeType": "pr",
 	"commitMessageLowerCase": "never",
 	"dependencyDashboard": true,
 	"description": "Custom renovate rules for @dschach",
-	//"enabledManagers": ["github-actions", "npm"],
 	"extends": ["config:recommended", ":semanticCommits"],
 	"separateMinorPatch": false,
 	"github-actions": {
