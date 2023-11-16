@@ -25,7 +25,7 @@ jobs:
     steps:
       # Checkout the source code
       - name: 'Checkout source code'
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       # Install Salesforce CLI
       - name: 'Install Salesforce sfdx CLI'
@@ -75,7 +75,7 @@ jobs:
 
       # Upload code coverage to Codecov.io
       - name: 'Upload code coverage for Apex to Codecov.io'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3
         with:
           flags: Apex
           token: ${{ secrets.codecov-token }}
