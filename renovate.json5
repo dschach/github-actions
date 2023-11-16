@@ -10,7 +10,8 @@
 		"docker:pinDigests",
 		"helpers:pinGitHubActionDigests",
 		":semanticCommits",
-		":semanticCommitScope({{depName}})"
+		":semanticCommitScope({{depName}})",
+		":approveMajorUpdates"
 	],
 	"schedule": [],
 	"timezone": "America/Los_Angeles",
@@ -31,9 +32,20 @@
 		],
 		"semanticCommitType": "ci"
 	},
+	"major": {
+		"autoApprove": false,
+		"automerge": false
+	},
 	"pre-commit": { "enabled": true },
 	"vulnerabilityAlerts": { "enabled": true },
-	"lockFileMaintenance": { "enabled": true, "automerge": true },
+	"lockFileMaintenance": {
+		"schedule": ["monthly"],
+		"semanticCommitScope": "lock-file",
+		"semanticCommitType": "chore",
+		"enabled": true,
+		"autoApprove": false,
+		"automerge": false
+	},
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
