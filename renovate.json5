@@ -5,6 +5,8 @@
 	"timezone": "America/Los_Angeles",
 	"automergeType": "pr",
 	"commitMessageLowerCase": "never",
+	"commitBodyTable": true,
+	"semanticCommits": "enabled",
 	"dependencyDashboard": true,
 	"description": "Custom renovate rules for @dschach",
 	"extends": ["config:base", ":semanticCommits"],
@@ -47,19 +49,25 @@
 			"matchUpdateTypes": ["minor", "patch"]
 		},
 		{
-			"commitMessagePrefix": "deps({{depName}})",
+			//"commitMessagePrefix": "deps({{depName}})",
+			"semanticCommitType": "deps",
+			"semanticCommitScope": "{{depName}}",
 			"description": "npm dependencies (rare)",
 			"matchManagers": ["npm"],
 			"matchDepTypes": ["dependencies"]
 		},
 		{
-			"commitMessagePrefix": "build({{depName}}",
+			//"commitMessagePrefix": "build({{depName}}",
+			"semanticCommitType": "build",
+			"semanticCommitScope": "{{depName}}",
 			"description": "npm devDependencies",
 			"matchManagers": ["npm"],
 			"matchDepTypes": ["devDependencies", "optionalDependencies"]
 		},
 		{
-			"commitMessagePrefix": "ci({{depName}}",
+			//"commitMessagePrefix": "ci({{depName}}",
+			"semanticCommitType": "ci",
+			"semanticCommitScope": "{{depName}}",
 			"description": "All Github updates",
 			"matchManagers": ["github-actions"]
 		},
