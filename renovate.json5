@@ -69,6 +69,12 @@
 			"matchDepTypes": ["devDependencies", "optionalDependencies"]
 		},
 		{
+			"description": "renovate updates require approval",
+			"matchManagers": ["npm"],
+			"matchPackageNames": ["renovate"],
+			"dependencyDashboardApproval": true
+		},
+		{
 			"description": "Github minor/patch updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
