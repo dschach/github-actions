@@ -16,8 +16,5 @@ jobs:
     if: github.ref_name == 'main' && github.ref_type == 'branch'
     needs: format-check
     uses: ./.github/workflows/release-please.yml
-    with:
-      release-type: sfdx
-      the-branch: main
     secrets:
       release-token: ${{ secrets.RELEASE_TOKEN }}
