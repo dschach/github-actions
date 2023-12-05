@@ -1,29 +1,16 @@
 name: release-please
 on:
   workflow_call:
-    inputs:
-      release-type:
-        required: false
-        type: string
-        default: 'sfdx'
-      the-branch:
-        required: false
-        type: string
-        description: 'The branch used for this release'
-        default: 'main'
     secrets:
       release-token:
         required: true
-        description: 'The access token so Release Please can work'
+        description: 'The access token so Release Please can propagate workflows'
 
 jobs:
   release-please:
     name: Release Please
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@db8f2c60ee802b3748b512940dde88eabd7b7e01 # v3
+      - uses: google-github-actions/release-please-action@a6d1fd9854c8c40688a72f7e4b072a1e965860a0 # v4
         with:
-          command: manifest
           token: ${{ secrets.release-token }}
-          release-type: ${{ inputs.release-type }}
-          default-branch: ${{ inputs.the-branch }}
