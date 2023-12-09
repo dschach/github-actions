@@ -86,11 +86,15 @@
 			"matchManagers": ["github-actions"],
 			"matchUpdateTypes": ["major"]
 		},
-		{
+		/* {
 			"description": "Github action version pinning",
 			"matchManagers": ["github-actions"],
 			"matchUpdateTypes": ["pin", "pinDigest"],
 			"semanticCommitScope": "github-actions"
+		}, */
+		{
+			"matchDepTypes": ["action"],
+			"pinDigests": false
 		}
 	]
 }
