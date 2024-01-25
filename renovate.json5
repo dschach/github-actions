@@ -43,8 +43,8 @@
 		"semanticCommitScope": "lock-file",
 		"semanticCommitType": "chore",
 		"enabled": true,
-		"autoApprove": false,
-		"automerge": false
+		"autoApprove": true,
+		"automerge": true
 	},
 	"packageRules": [
 		{
