@@ -25,7 +25,7 @@
 	"separateMinorPatch": false,
 	"github-actions": {
 		"description": "All Github updates",
-		"automergeType": "branch",
+		"automergeType": "pr",
 		"fileMatch": [
 			"^(workflow-templates|\\.(?:github|gitea|forgejo)/workflows)/[^/]+\\.ya?ml$",
 			"(^|/)action\\.ya?ml$"
