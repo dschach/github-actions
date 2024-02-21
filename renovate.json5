@@ -34,26 +34,25 @@
 		"semanticCommitType": "ci"
 	},
 	"major": {
-		"autoApprove": false,
+		"autoApprove": true,
 		"automerge": false
 	},
 	"pre-commit": { "enabled": true },
 	"vulnerabilityAlerts": { "enabled": true },
 	"lockFileMaintenance": {
-		"schedule": ["monthly"],
 		"semanticCommitScope": "lock-file",
 		"semanticCommitType": "chore",
 		"enabled": true,
-		"autoApprove": true,
+		"autoApprove": false,
 		"automerge": true
 	},
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
-			"automerge": true,
-			"autoApprove": true,
 			"matchCurrentVersion": ">= 1.0.0",
-			"matchUpdateTypes": ["minor", "patch"]
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"autoApprove": true
 		},
 		{
 			"semanticCommitType": "deps",
@@ -79,13 +78,19 @@
 			"description": "Github minor/patch updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["minor", "patch"]
+			"matchUpdateTypes": ["minor", "patch"],
+			"semanticCommitType": "ci",
+			"autoApprove": true,
+			"automerge": false
 		},
 		{
 			"description": "Github major updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["major"]
+			"matchUpdateTypes": ["major"],
+			"semanticCommitType": "ci",
+			"automerge": false,
+			"autoApprove": true
 		},
 		/* {
 			"description": "Github action version pinning",
