@@ -22,6 +22,7 @@
 	"commitBodyTable": true,
 	"semanticCommits": "enabled",
 	"dependencyDashboard": true,
+	"dependencyDashboardAutoclose": true,
 	"separateMinorPatch": false,
 	"github-actions": {
 		"description": "All Github updates",

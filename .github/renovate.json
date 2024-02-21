@@ -10,5 +10,8 @@
 			"matchDepTypes": ["action"],
 			"pinDigests": false
 		}
-	]
+	],
+	"lockFileMaintenance": {
+		"enabled": false
+	}
 }
