@@ -5,14 +5,11 @@
 		"autoApprove": true,
 		"automerge": false
 	},
+	"pinDigests": false,
 	"packageRules": [
 		{
 			"matchDepTypes": ["action"],
 			"pinDigests": false
-		},
-		{
-			"matchManagers": ["npm"],
-			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
 		}
 	],
 	"lockFileMaintenance": {

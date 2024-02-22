@@ -8,7 +8,7 @@
 		"replacements:all",
 		"workarounds:all",
 		"docker:pinDigests",
-		"helpers:pinGitHubActionDigests",
+		//"helpers:pinGitHubActionDigests",
 		":semanticCommits",
 		":semanticCommitScope({{depName}})",
 		":approveMajorUpdates"
@@ -46,6 +46,7 @@
 		"autoApprove": false,
 		"automerge": true
 	}, */
+	"lockFileMaintenance": { "enabled": false },
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
@@ -55,16 +56,16 @@
 			"autoApprove": true
 		},
 		{
+			"description": "npm dependencies (rare)",
 			"semanticCommitType": "deps",
 			"semanticCommitScope": "{{depName}}",
-			"description": "npm dependencies (rare)",
 			"matchManagers": ["npm"],
 			"matchDepTypes": ["dependencies"]
 		},
 		{
+			"description": "npm devDependencies",
 			"semanticCommitType": "build",
 			"semanticCommitScope": "{{depName}}",
-			"description": "npm devDependencies",
 			"matchManagers": ["npm"],
 			"matchDepTypes": ["devDependencies", "optionalDependencies"]
 		},
@@ -79,7 +80,6 @@
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
 			"matchUpdateTypes": ["minor", "patch"],
-			"semanticCommitType": "ci",
 			"autoApprove": true,
 			"automerge": false
 		},
@@ -88,19 +88,27 @@
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
 			"matchUpdateTypes": ["major"],
-			"semanticCommitType": "ci",
 			"automerge": false,
 			"autoApprove": true
 		},
-		/* {
-			"description": "Github action version pinning",
+		{
+			"description": "All GitHub updates",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["pin", "pinDigest"],
-			"semanticCommitScope": "github-actions"
-		}, */
+			"semanticCommitType": "ci"
+		},
+		{
+			"description": "All prerelease",
+			"matchCurrentVersion": "< 1.0.0",
+			"automerge": false,
+			"autoApprove": false
+		},
 		{
 			"matchDepTypes": ["action"],
 			"pinDigests": false
+		},
+		{
+			"matchManagers": ["npm", "github-actions"],
+			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
 		}
 	]
 }
