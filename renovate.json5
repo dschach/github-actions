@@ -39,13 +39,13 @@
 	},
 	"pre-commit": { "enabled": true },
 	"vulnerabilityAlerts": { "enabled": true },
-	"lockFileMaintenance": {
+	/* "lockFileMaintenance": {
 		"semanticCommitScope": "lock-file",
 		"semanticCommitType": "chore",
 		"enabled": true,
 		"autoApprove": false,
 		"automerge": true
-	},
+	}, */
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
