@@ -6,12 +6,28 @@
 	"useTabs": true,
 	"bracketSpacing": true,
 	"bracketSameLine": true,
+	"xmlSelfClosingSpace": true,
 	"overrides": [
 		{
 			"files": "*.{yml,yaml}",
 			"options": { "tabWidth": 2, "useTabs": false, "singleQuote": true }
 		},
-		{ "files": "*.json", "options": { "printWidth": 80 } },
+		{
+			"files": "*.xml",
+			"options": {
+				"useTabs": true,
+				"tabWidth": 2
+			}
+		},
+		{
+			"files": "*.{prettierrc, json}",
+			"options": {
+				"parser": "json",
+				"printWidth": 80,
+				"useTabs": true,
+				"singleQuote": false
+			}
+		},
 		{
 			"files": "*.json5",
 			"options": {
@@ -25,5 +41,7 @@
 			"files": ".prettierrc",
 			"options": { "parser": "json", "printWidth": 80 }
 		}
-	]
+	],
+	"plugins": ["@prettier/plugin-xml"],
+	"$schema": "https://json.schemastore.org/prettierrc"
 }
