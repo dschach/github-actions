@@ -18,7 +18,7 @@
 		"lint-staged": "^15.2.2",
 		"marked": "^12.0.1",
 		"prettier": "^3.2.5",
-		"renovate": "^37.204.1"
+		"renovate": "^37.229.3"
 	},
 	"lint-staged": {
 		"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml}": [
