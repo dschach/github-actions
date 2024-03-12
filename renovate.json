@@ -1,18 +1,5 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": ["github>dschach/github-actions:renovate.json5"],
-	"major": {
-		"autoApprove": true,
-		"automerge": false
-	},
-	"pinDigests": false,
-	"packageRules": [
-		{
-			"matchDepTypes": ["action"],
-			"pinDigests": false
-		}
-	],
-	"lockFileMaintenance": {
-		"enabled": false
-	}
+	"packageRules": []
 }

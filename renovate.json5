@@ -24,6 +24,7 @@
 	"dependencyDashboard": true,
 	"dependencyDashboardAutoclose": true,
 	"separateMinorPatch": false,
+	"pinDigests": false,
 	"github-actions": {
 		"description": "All Github updates",
 		"automergeType": "pr",
@@ -108,7 +109,7 @@
 		},
 		{
 			"matchManagers": ["github-actions"],
-			"commitMessageExtra": "from v{{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
 		},
 		{
 			"matchManagers": ["npm"],
