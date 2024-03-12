@@ -23,6 +23,7 @@
 	"semanticCommits": "enabled",
 	"dependencyDashboard": true,
 	"dependencyDashboardAutoclose": true,
+	"configWarningReuseIssue": false,
 	"separateMinorPatch": false,
 	"pinDigests": false,
 	"github-actions": {
