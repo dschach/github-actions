@@ -2,11 +2,11 @@
 	"packages": {
 		".": {
 			"changelog-path": "CHANGELOG.md",
-			"release-type": "simple",
 			"bump-minor-pre-major": true,
 			"bump-patch-for-minor-pre-major": true,
 			"draft": false,
-			"prerelease": true
+			"prerelease": true,
+			"include-component-in-tag": false
 		}
 	},
 	"changelog-path": "CHANGELOG.md",
