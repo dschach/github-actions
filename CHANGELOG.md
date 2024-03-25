@@ -28,7 +28,6 @@
 
 * **renovate:** make renovate validate on-demand ([b0ac750](https://github.com/dschach/github-actions/commit/b0ac750ea2b45c548ca3a6fb823d34c6d45895f6))
 
-
 ### Build System
 
 * **@prettier/plugin-xml:** Update dependency @prettier/plugin-xml to ^3.3.0 ([#111](https://github.com/dschach/github-actions/issues/111)) ([6c27b05](https://github.com/dschach/github-actions/commit/6c27b05a3d22ed2a7f9d34fcb56ebe696c621c7c))
