@@ -81,22 +81,21 @@
 			"description": "Github minor/patch updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["minor", "patch"],
-			"autoApprove": true,
-			"automerge": false
+			"matchUpdateTypes": ["minor", "patch"]
 		},
 		{
 			"description": "Github major updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["major"],
-			"automerge": false,
-			"autoApprove": true
+			"matchUpdateTypes": ["major"]
 		},
 		{
 			"description": "All GitHub updates",
 			"matchManagers": ["github-actions"],
-			"semanticCommitType": "ci"
+			"semanticCommitType": "ci",
+			"autoApprove": true,
+			"automerge": false,
+			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
 		},
 		{
 			"description": "All prerelease",
@@ -107,10 +106,6 @@
 		{
 			"matchDepTypes": ["action"],
 			"pinDigests": false
-		},
-		{
-			"matchManagers": ["github-actions"],
-			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
 		},
 		{
 			"matchManagers": ["npm"],
