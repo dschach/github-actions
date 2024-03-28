@@ -5,16 +5,16 @@ on:
       release-token:
         required: true
         description: 'The access token so Release Please can propagate workflows'
-    outputs:
-      rp-outputs:
-        value: ${{ jobs.release-please.outputs.release-action-outputs}}
+    #outputs:
+    #  rp-outputs:
+    #    value: ${{ jobs.release-please.outputs.release-action-outputs}}
 
 jobs:
   release-please:
     name: Release Please
     runs-on: ubuntu-latest
-    outputs:
-      release-action-outputs: ${{ steps.release.outputs }}
+    #outputs:
+    #  release-action-outputs: ${{ steps.release.outputs }}
     steps:
       - id: release
         uses: google-github-actions/release-please-action@v4
