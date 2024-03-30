@@ -13,7 +13,7 @@
 		"renovate": "npm install -i renovate && npx renovate-config-validator && npm uninstall renovate"
 	},
 	"devDependencies": {
-		"@prettier/plugin-xml": "^3.4.0",
+		"@prettier/plugin-xml": "^3.4.1",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2",
 		"marked": "^12.0.1",
