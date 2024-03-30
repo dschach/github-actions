@@ -19,12 +19,19 @@ jobs:
       - name: 'Checkout source code'
         uses: actions/checkout@v4
 
+      - name: 'Setup node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
       # Install npm dependencies for Prettier
       - name: 'Install Dependencies'
-        #run: npm install prettier --save-dev
         run: npm ci
 
       # Prettier formatting
       - name: 'Code formatting verification with Prettier'
         id: run-verify
-        run: npx prettier --list-different "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}"
+        run:
+          npm run prettier:verify
+          #npx prettier --list-different "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}"
