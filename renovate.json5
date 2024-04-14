@@ -48,7 +48,18 @@
 		"autoApprove": false,
 		"automerge": true
 	}, */
-	"lockFileMaintenance": { "enabled": false },
+	"lockFileMaintenance": {
+		"enabled": false,
+		"recreateWhen": "always",
+		"rebaseStalePrs": true,
+		"branchTopic": "lock-file-maintenance",
+		"commitMessageAction": "Lock file maintenance",
+		"commitMessageTopic": "",
+		"commitMessageExtra": "",
+		"schedule": ["before 4am on monday"],
+		"groupName": "",
+		"prBodyDefinitions": { "Change": "All locks refreshed" }
+	},
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
