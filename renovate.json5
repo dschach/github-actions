@@ -48,18 +48,6 @@
 		"autoApprove": false,
 		"automerge": true
 	}, */
-	"lockFileMaintenance": {
-		"enabled": false,
-		"recreateWhen": "always",
-		"rebaseStalePrs": true,
-		"branchTopic": "lock-file-maintenance",
-		"commitMessageAction": "Lock file maintenance",
-		"commitMessageTopic": "",
-		"commitMessageExtra": "",
-		"schedule": ["before 4am on monday"],
-		"groupName": "",
-		"prBodyDefinitions": { "Change": "All locks refreshed" }
-	},
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
@@ -121,7 +109,32 @@
 		},
 		{
 			"matchManagers": ["npm"],
+			"matchUpdateTypes": [
+				"bump",
+				"digest",
+				"major",
+				"minor",
+				"patch",
+				"replacement",
+				"rollback"
+			],
 			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+		},
+		{
+			"matchUpdateTypes": ["lockFileMaintenance"],
+			"recreateWhen": "always",
+			"rebaseStalePrs": true,
+			"branchTopic": "lock-file-maintenance",
+			"commitMessageAction": "Lock file maintenance",
+			"commitMessageTopic": "",
+			"commitMessageExtra": "",
+			"commitMessagePrefix": "chore",
+			"schedule": ["before 4am on monday"],
+			"groupName": "",
+			"prBodyDefinitions": { "Change": "All locks refreshed" }
 		}
-	]
+	],
+	"lockFileMaintenance": {
+		"enabled": false
+	}
 }
