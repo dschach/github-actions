@@ -1,7 +1,7 @@
 {
 	"name": "dschach-github-actions",
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.1.2",
 	"description": "Reusable GitHub Actions for all repositories to use in centralized location.",
 	"scripts": {
 		"pmd:scan:csv": "$HOME/pmd/bin/pmd check --dir / --format csv --report-file pmd/pmd.csv --cache .pmdCache",

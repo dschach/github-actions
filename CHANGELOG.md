@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.2](https://github.com/dschach/github-actions/compare/v0.1.1...v0.1.2) (2024-03-19)
+## [0.1.2](https://github.com/dschach/github-actions/compare/v0.1.1...v0.1.2) (2024-03-25)
 
 
 ### Bug Fixes
@@ -23,6 +23,10 @@
 * **renovate:** minor config update ([#114](https://github.com/dschach/github-actions/issues/114)) ([dd5f863](https://github.com/dschach/github-actions/commit/dd5f863b0379da8be061a38d0500accab381e3e3))
 * **renovate:** update base configs for more granularity ([d2078f5](https://github.com/dschach/github-actions/commit/d2078f52b22d72ff780a8e7806eff0303362a20a))
 
+
+### Dependencies
+
+* **renovate:** make renovate validate on-demand ([b0ac750](https://github.com/dschach/github-actions/commit/b0ac750ea2b45c548ca3a6fb823d34c6d45895f6))
 
 ### Build System
 
@@ -75,6 +79,7 @@
 
 ### Continuous Integration
 
+* **ci:** fix reference to reusable action ([5b9e9d7](https://github.com/dschach/github-actions/commit/5b9e9d72f31d7b801cebe09df427579a73539145))
 * **codecov/codecov-action:** Update codecov/codecov-action action to v4 ([#108](https://github.com/dschach/github-actions/issues/108)) ([f9f2b8a](https://github.com/dschach/github-actions/commit/f9f2b8a443708850e7d21d691853748adaa88c51))
 * **dependabot:** disable dependabot and use renovate ([1d07657](https://github.com/dschach/github-actions/commit/1d076571c9db1d60717c4ef9eead5295c8eb0c62))
 * **github-actions:** Pin actions/setup-node action to 8f152de ([#89](https://github.com/dschach/github-actions/issues/89)) ([148a101](https://github.com/dschach/github-actions/commit/148a101730b5c4e715777ebc4e9fb88449890503))
@@ -83,6 +88,8 @@
 * **issues:** create ieeue auto-assign workflow ([95e1533](https://github.com/dschach/github-actions/commit/95e1533bd9cea50c0c6579518c966adb775d8c98))
 * move reusable actions to subdirectory ([695d093](https://github.com/dschach/github-actions/commit/695d09311f416d0b6a65fc3159b64c4097e978d0))
 * **release-please:** include outputs in reusable workflow ([bf7d244](https://github.com/dschach/github-actions/commit/bf7d24412d1d2fee09dce460b1c6fabb56924601))
+* **release-please:** remove component from tag ([ba4c535](https://github.com/dschach/github-actions/commit/ba4c5354d44895e79cc5edf5453adfaddc7aba7e))
+* **release-please:** remove release-type ([3535543](https://github.com/dschach/github-actions/commit/353554318e6f874fdb7bccfbf6b4ff84d9c957b4))
 * **renovate:** automerge pr by default (for now) ([0693b4e](https://github.com/dschach/github-actions/commit/0693b4e3cfb22467ba87834b8972d0b8cd6f98cb))
 * **renovate:** bump semVer ranges ([b5227e6](https://github.com/dschach/github-actions/commit/b5227e6884575ad80177007fbb460a3d50672d64))
 * **renovate:** config updates ([215acc2](https://github.com/dschach/github-actions/commit/215acc213235b22448304ea3bfee45f370bf276e))
