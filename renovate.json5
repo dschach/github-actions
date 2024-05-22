@@ -128,7 +128,7 @@
 			"commitMessageAction": "Lock file maintenance",
 			"commitMessageTopic": "",
 			"commitMessageExtra": "",
-			"commitMessagePrefix": "chore",
+			"commitMessagePrefix": "chore:",
 			"schedule": ["before 4am on monday"],
 			"groupName": "",
 			"prBodyDefinitions": { "Change": "All locks refreshed" }
