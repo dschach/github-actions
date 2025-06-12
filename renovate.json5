@@ -8,7 +8,6 @@
 		"replacements:all",
 		"workarounds:all",
 		"docker:pinDigests",
-		//"helpers:pinGitHubActionDigests",
 		":semanticCommits",
 		":semanticCommitScope({{depName}})",
 		":approveMajorUpdates"
@@ -29,25 +28,17 @@
 	"github-actions": {
 		"description": "All Github updates",
 		"automergeType": "pr",
-		"fileMatch": [
+		"managerFilePatterns": [
 			"^(workflow-templates|\\.(?:github|gitea|forgejo)/workflows)/[^/]+\\.ya?ml$",
 			"(^|/)action\\.ya?ml$"
 		],
 		"semanticCommitType": "ci"
 	},
-	"major": {
-		"autoApprove": true,
-		"automerge": false
-	},
+	"major": { "autoApprove": true, "automerge": false },
+	"patch": { "autoApprove": true, "automerge": false },
+	"minor": { "autoApprove": true, "automerge": false },
 	"pre-commit": { "enabled": true },
 	"vulnerabilityAlerts": { "enabled": true },
-	/* "lockFileMaintenance": {
-		"semanticCommitScope": "lock-file",
-		"semanticCommitType": "chore",
-		"enabled": true,
-		"autoApprove": false,
-		"automerge": true
-	}, */
 	"packageRules": [
 		{
 			"description": "all minor/patch updates",
@@ -80,28 +71,31 @@
 			"description": "Github minor/patch updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["minor", "patch"]
+			"matchUpdateTypes": ["minor", "patch"],
+			"autoApprove": true,
+			"automerge": false
 		},
 		{
 			"description": "Github major updates",
 			"matchCurrentVersion": ">= 1.0.0",
 			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["major"]
+			"matchUpdateTypes": ["major"],
+			"autoApprove": true,
+			"automerge": false
 		},
 		{
 			"description": "All GitHub updates",
 			"matchManagers": ["github-actions"],
 			"semanticCommitType": "ci",
-			"autoApprove": true,
-			"automerge": false,
-			"pinDigests": false,
-			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+			"semanticCommitScope": "{{depName}}",
+			//"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
 		},
 		{
 			"description": "All prerelease",
 			"matchCurrentVersion": "< 1.0.0",
-			"automerge": false,
-			"autoApprove": false
+			"autoApprove": false,
+			"automerge": false
 		},
 		{
 			"matchDepTypes": ["action"],
@@ -109,32 +103,17 @@
 		},
 		{
 			"matchManagers": ["npm"],
-			"matchUpdateTypes": [
-				"bump",
-				"digest",
-				"major",
-				"minor",
-				"patch",
-				"replacement",
-				"rollback"
-			],
 			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
-		},
-		{
-			"matchUpdateTypes": ["lockFileMaintenance"],
-			"recreateWhen": "always",
-			"rebaseStalePrs": true,
-			"branchTopic": "lock-file-maintenance",
-			"commitMessageAction": "Lock file maintenance",
-			"commitMessageTopic": "",
-			"commitMessageExtra": "",
-			"commitMessagePrefix": "chore:",
-			"schedule": ["before 4am on monday"],
-			"groupName": "",
-			"prBodyDefinitions": { "Change": "All locks refreshed" }
 		}
 	],
 	"lockFileMaintenance": {
 		"enabled": false
 	}
+	/* "lockFileMaintenance": {
+		"semanticCommitScope": "lock-file",
+		"semanticCommitType": "chore",
+		"enabled": true,
+		"autoApprove": false,
+		"automerge": true
+	}, */
 }
