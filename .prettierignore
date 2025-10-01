@@ -21,6 +21,7 @@ data/
 pmd/
 
 # Exclude project config
+package-lock.json
 sfdx-project.json
 dependencies.json
 CHANGELOG.md
