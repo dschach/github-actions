@@ -60,14 +60,23 @@ jobs:
         if: |
           (
             steps.dependabot.outputs.update-type == 'version-update:semver-patch' &&
-            contains('direct:production,indirect:production', steps.dependabot.outputs.dependency-type)
+            contains(steps.dependabot.outputs.dependency-type, 'production')
           ) || (
             contains('version-update:semver-minor,version-update:semver-patch', steps.dependabot.outputs.update-type) &&
-            contains('direct:development,indirect:development', steps.dependabot.outputs.dependency-type)
+            contains(steps.dependabot.outputs.dependency-type, 'development')
           )
         run: echo "::notice ::auto-merge-check conditions satisfied"
       - name: Approve a PR if not already approved
-        if: ${{ steps.auto-merge-check.conclusion == 'success' }}
+        if: |
+          ${{ steps.auto-merge-check.conclusion == 'success'  
+          &&
+          (
+            steps.dependabot.outputs.update-type == 'version-update:semver-patch' &&
+            contains(steps.dependabot.outputs.dependency-type, 'production')
+          ) || (
+            contains('version-update:semver-minor,version-update:semver-patch', steps.dependabot.outputs.update-type) &&
+            contains(steps.dependabot.outputs.dependency-type, 'development')
+          ) }}
         run: |
           gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
           if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
