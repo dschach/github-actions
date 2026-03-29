@@ -1,8 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>dschach/github-actions:renovate.json5"],
-  "major": { "labels": ["major"] },
-  "patch": { "labels": ["patch"] },
-  "minor": { "labels": ["minor"] },
+  "major": { "addLabels": ["major"] },
+  "minor": { "addLabels": ["minor"] },
+  "patch": { "addLabels": ["patch"] },
   "packageRules": []
 }
