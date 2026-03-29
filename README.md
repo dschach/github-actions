@@ -30,7 +30,7 @@ Events and Actions
 - Apex compile
 - Apex Tests & upload to codecov
 - Scratch org
-  
+
   Adjust namespace if necessary?
 
 # Release Please
