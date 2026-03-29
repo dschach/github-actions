@@ -7,24 +7,29 @@ Events and Actions
 # Dependabot auto-approve
 
 - Auto-merge
+- Template workflow for each repository to call auto-merge, and then run release-please if appropriate
 
   Fix title
 
 # Push (Commit)
 
 - Verify Prettier formatting
-- PMD Analysis (download?)
+- Salesforce Code Analyzer
+- ~~PMD Analysis (download?)~~
 
 # Pull Request (any branch)
 
 - Verify Prettier formatting
+- Code Analyzer
 - Lint & Test LWCs & upload to codecov
 
-- PMD Analysis (action?)
+- ~~PMD Analysis (action?)~~
 
   Needs LWC upload
 
-- Scratch org & Ape Tests & upload to codecov
+- Apex compile
+- Apex Tests & upload to codecov
+- Scratch org
 
   Adjust namespace if necessary?
 
