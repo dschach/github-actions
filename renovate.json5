@@ -8,8 +8,6 @@
     "replacements:all",
     "workarounds:all",
     "docker:pinDigests",
-    ":semanticCommits",
-    ":semanticCommitScope({{depName}})",
     ":approveMajorUpdates"
   ],
   "schedule": [],
@@ -20,6 +18,7 @@
   "rangeStrategy": "bump",
   "commitBodyTable": true,
   "semanticCommits": "enabled",
+  "semanticCommitScope": "{{depName}}",
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
   "configWarningReuseIssue": false,
