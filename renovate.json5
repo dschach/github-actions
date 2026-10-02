@@ -1,115 +1,116 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"description": "Custom renovate rules for @dschach",
-	"extends": [
-		":ignoreModulesAndTests",
-		"group:monorepos",
-		"group:recommended",
-		"replacements:all",
-		"workarounds:all",
-		"docker:pinDigests",
-		":semanticCommits",
-		":semanticCommitScope({{depName}})",
-		":approveMajorUpdates"
-	],
-	"schedule": [],
-	"timezone": "America/Los_Angeles",
-	"configMigration": true,
-	"automergeType": "pr",
-	"commitMessageLowerCase": "auto",
-	"rangeStrategy": "bump",
-	"commitBodyTable": true,
-	"semanticCommits": "enabled",
-	"dependencyDashboard": true,
-	"dependencyDashboardAutoclose": true,
-	"configWarningReuseIssue": false,
-	"separateMinorPatch": false,
-	"pinDigests": false,
-	"github-actions": {
-		"description": "All Github updates",
-		"automergeType": "pr",
-		"managerFilePatterns": [
-			"^(workflow-templates|\\.(?:github|gitea|forgejo)/workflows)/[^/]+\\.ya?ml$",
-			"(^|/)action\\.ya?ml$"
-		],
-		"semanticCommitType": "ci"
-	},
-	"major": { "autoApprove": true, "automerge": false },
-	"patch": { "autoApprove": true, "automerge": false },
-	"minor": { "autoApprove": true, "automerge": false },
-	"pre-commit": { "enabled": true },
-	"vulnerabilityAlerts": { "enabled": true },
-	"packageRules": [
-		{
-			"description": "all minor/patch updates",
-			"matchCurrentVersion": ">= 1.0.0",
-			"matchUpdateTypes": ["minor", "patch"],
-			"automerge": false,
-			"autoApprove": true
-		},
-		{
-			"description": "npm dependencies (rare)",
-			"semanticCommitType": "deps",
-			"semanticCommitScope": "{{depName}}",
-			"matchManagers": ["npm"],
-			"matchDepTypes": ["dependencies"]
-		},
-		{
-			"description": "npm devDependencies",
-			"semanticCommitType": "build",
-			"semanticCommitScope": "{{depName}}",
-			"matchManagers": ["npm"],
-			"matchDepTypes": ["devDependencies", "optionalDependencies"]
-		},
-		{
-			"description": "renovate updates require approval",
-			"matchManagers": ["npm"],
-			"matchPackageNames": ["renovate"],
-			"dependencyDashboardApproval": true
-		},
-		{
-			"description": "Github minor/patch updates",
-			"matchCurrentVersion": ">= 1.0.0",
-			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["minor", "patch"],
-			"autoApprove": true,
-			"automerge": false
-		},
-		{
-			"description": "Github major updates",
-			"matchCurrentVersion": ">= 1.0.0",
-			"matchManagers": ["github-actions"],
-			"matchUpdateTypes": ["major"],
-			"autoApprove": true,
-			"automerge": false
-		},
-		{
-			"description": "All GitHub updates",
-			"matchManagers": ["github-actions"],
-			"semanticCommitType": "ci",
-			"semanticCommitScope": "{{depName}}",
-			//"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
-			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
-		},
-		{
-			"description": "All prerelease",
-			"matchCurrentVersion": "< 1.0.0",
-			"autoApprove": false,
-			"automerge": false
-		},
-		{
-			"matchDepTypes": ["action"],
-			"pinDigests": false
-		},
-		{
-			"matchManagers": ["npm"],
-			"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
-		}
-	],
-	"lockFileMaintenance": {
-		"enabled": false
-	}
-	/* "lockFileMaintenance": {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Custom renovate rules for @dschach",
+  "extends": [
+    ":ignoreModulesAndTests",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "workarounds:all",
+    "docker:pinDigests",
+    ":semanticCommits",
+    ":semanticCommitScope({{depName}})",
+    ":approveMajorUpdates"
+  ],
+  "schedule": [],
+  "timezone": "America/Los_Angeles",
+  "configMigration": true,
+  "automergeType": "pr",
+  "commitMessageLowerCase": "auto",
+  "rangeStrategy": "bump",
+  "commitBodyTable": true,
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "dependencyDashboardAutoclose": true,
+  "configWarningReuseIssue": false,
+  "separateMinorPatch": false,
+  "pinDigests": false,
+  "github-actions": {
+    "description": "All Github updates",
+    "automergeType": "pr",
+    "managerFilePatterns": [
+      "^(workflow-templates|\\.(?:github|gitea|forgejo)/workflows)/[^/]+\\.ya?ml$",
+      "(^|/)action\\.ya?ml$"
+    ],
+    "semanticCommitType": "ci"
+  },
+  "major": { "autoApprove": true, "automerge": false },
+  "patch": { "autoApprove": true, "automerge": false },
+  "minor": { "autoApprove": true, "automerge": false },
+  "pre-commit": { "enabled": true },
+  "vulnerabilityAlerts": { "enabled": true },
+  "packageRules": [
+    {
+      "description": "all minor/patch updates",
+      "matchCurrentVersion": ">= 1.0.0",
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": false,
+      "autoApprove": true
+    },
+    {
+      "description": "npm dependencies (rare)",
+      "semanticCommitType": "deps",
+      "semanticCommitScope": "{{depName}}",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"]
+    },
+    {
+      "description": "npm devDependencies",
+      "semanticCommitType": "build",
+      "semanticCommitScope": "{{depName}}",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies", "optionalDependencies"]
+    },
+    {
+      "description": "renovate updates require approval",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["renovate"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Github minor/patch updates",
+      "matchCurrentVersion": ">= 1.0.0",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "autoApprove": true,
+      "automerge": false,
+      "enabled": false
+    },
+    {
+      "description": "Github major updates",
+      "matchCurrentVersion": ">= 1.0.0",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "autoApprove": true,
+      "automerge": false
+    },
+    {
+      "description": "All GitHub updates",
+      "matchManagers": ["github-actions"],
+      "semanticCommitType": "ci",
+      "semanticCommitScope": "{{depName}}",
+      //"commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewVersion}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+      "commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+    },
+    {
+      "description": "All prerelease",
+      "matchCurrentVersion": "< 1.0.0",
+      "autoApprove": false,
+      "automerge": false
+    },
+    {
+      "matchDepTypes": ["action"],
+      "pinDigests": false
+    },
+    {
+      "matchManagers": ["npm"],
+      "commitMessageExtra": "from {{currentVersion}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{newVersion}}{{else}}{{#if isSingleVersion}}{{newVersion}}{{else}}{{#if newValue}}{{{newVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}"
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": false
+  }
+  /* "lockFileMaintenance": {
 		"semanticCommitScope": "lock-file",
 		"semanticCommitType": "chore",
 		"enabled": true,
