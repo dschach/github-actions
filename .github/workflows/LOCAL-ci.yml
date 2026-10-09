@@ -13,7 +13,7 @@ jobs:
 
   release-please:
     # runs only on push - not on workflow-dispatch
-    if: github.ref_name == 'main' && github.ref_type == 'branch'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: format-check
     uses: ./.github/workflows/release-please.yml
     secrets:
