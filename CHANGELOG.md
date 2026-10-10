@@ -1,5 +1,98 @@
 # Changelog
 
+## [0.1.3](https://github.com/dschach/github-actions/compare/v0.1.2...v0.1.3) (2026-10-10)
+
+
+### Features
+
+* allow lowercase first letter for PR titles ([0b70ce1](https://github.com/dschach/github-actions/commit/0b70ce1651457da725243f0a9435d919230d31e5))
+* **renovate:** change commitMessageLowerCase to auto ([e5a9666](https://github.com/dschach/github-actions/commit/e5a9666779d42e1f481cb76e602e7f0f4cc27296))
+
+
+### Bug Fixes
+
+* **renovate:** change commitMessageLowerCase to 'never' ([55c8b6e](https://github.com/dschach/github-actions/commit/55c8b6e03cf0dd98c69230e0be6447537cb8ee47))
+* **renovate:** Fix PR labels ([4871f6f](https://github.com/dschach/github-actions/commit/4871f6f06799ab3848cd74c8e0b66b6eea180278))
+* **renovate:** make label updates mergeable ([40bac08](https://github.com/dschach/github-actions/commit/40bac08ff8dca7fd97a667671458b732d8028279))
+* **workflow:** run release-please only on push to main ([baeff43](https://github.com/dschach/github-actions/commit/baeff436a3f2097c6b4990ad138011e9d0c078f6))
+
+
+### Miscellaneous Chores
+
+* **github-actions:** disable minor/patch github-actions and label Renovate PRs ([6e4e21b](https://github.com/dschach/github-actions/commit/6e4e21bcc335d079b1e3fd3bc6dd530f13b6efd1))
+* **prettier:** change prettier config from tabs to spaces ([#174](https://github.com/dschach/github-actions/issues/174)) ([7b99e20](https://github.com/dschach/github-actions/commit/7b99e20337191b03951101f913c2f3ba84c7c54c))
+* **renovate:** replace semanticCommits presets with explicit config options ([159a94e](https://github.com/dschach/github-actions/commit/159a94e40c4ffe5d3c0078fa4337e3fcba4b7f47))
+
+
+### Build System
+
+* **@prettier/plugin-xml:** Update dependency @prettier/plugin-xml from 3.4.1 to 3.4.2 ([#173](https://github.com/dschach/github-actions/issues/173)) ([69eb8e7](https://github.com/dschach/github-actions/commit/69eb8e71ccd0ef5d78d20d58bada311ae3afc02b))
+* **deps-dev:** bump picomatch from 2.3.1 to 2.3.2 ([#182](https://github.com/dschach/github-actions/issues/182)) ([20b1eaa](https://github.com/dschach/github-actions/commit/20b1eaa4e3be58248e9c22094cbf94607129817c))
+* **husky:** Update dependency husky from 9.0.11 to 9.1.0 ([#142](https://github.com/dschach/github-actions/issues/142)) ([95182d2](https://github.com/dschach/github-actions/commit/95182d224ee471dd7c24ad59c33c9407973cf405))
+* **husky:** Update dependency husky from 9.1.0 to 9.1.1 ([#143](https://github.com/dschach/github-actions/issues/143)) ([acc1814](https://github.com/dschach/github-actions/commit/acc1814f99be346df6f3f6d7132344d5b433382a))
+* **husky:** Update dependency husky from 9.1.1 to 9.1.2 ([#144](https://github.com/dschach/github-actions/issues/144)) ([7b9090b](https://github.com/dschach/github-actions/commit/7b9090bad6427704cae5545a3f7ecda2a11a0854))
+* **husky:** Update dependency husky from 9.1.2 to 9.1.3 ([#145](https://github.com/dschach/github-actions/issues/145)) ([d9c3572](https://github.com/dschach/github-actions/commit/d9c3572189864391d01ae3b1187615818cdf6e5f))
+* **husky:** Update dependency husky from 9.1.3 to 9.1.4 ([#147](https://github.com/dschach/github-actions/issues/147)) ([050a4db](https://github.com/dschach/github-actions/commit/050a4db1c15f222c36da5dbeff6a732145dea48c))
+* **husky:** Update dependency husky from 9.1.4 to 9.1.5 ([#150](https://github.com/dschach/github-actions/issues/150)) ([f24700c](https://github.com/dschach/github-actions/commit/f24700cd677bdfd4ae35c7ae6dd6996b78592d0d))
+* **husky:** Update dependency husky from 9.1.5 to 9.1.6 ([#152](https://github.com/dschach/github-actions/issues/152)) ([2434d1b](https://github.com/dschach/github-actions/commit/2434d1b0f6fb252442f1a466c74c112f03d463b1))
+* **husky:** Update dependency husky from 9.1.6 to 9.1.7 ([#153](https://github.com/dschach/github-actions/issues/153)) ([61d9d0a](https://github.com/dschach/github-actions/commit/61d9d0ab0600a0a258d47c30be68253a39620a9c))
+* **lint-staged:** Update dependency lint-staged from 15.2.10 to 15.2.11 ([#157](https://github.com/dschach/github-actions/issues/157)) ([a4b7b44](https://github.com/dschach/github-actions/commit/a4b7b44d53184564f116ba94bed98070792d3597))
+* **lint-staged:** Update dependency lint-staged from 15.2.11 to 15.3.0 ([#158](https://github.com/dschach/github-actions/issues/158)) ([f8a0a2b](https://github.com/dschach/github-actions/commit/f8a0a2b7e236ad79c5d64ad24e66b97498dbd917))
+* **lint-staged:** Update dependency lint-staged from 15.2.2 to 15.2.4 ([#131](https://github.com/dschach/github-actions/issues/131)) ([a2dfccb](https://github.com/dschach/github-actions/commit/a2dfccbafa5f2a3283f81c5106e61fbf6860f1b4))
+* **lint-staged:** Update dependency lint-staged from 15.2.4 to 15.2.5 ([#132](https://github.com/dschach/github-actions/issues/132)) ([62b20cf](https://github.com/dschach/github-actions/commit/62b20cfa008854c82593cf09cf99cbc82d2c83b5))
+* **lint-staged:** Update dependency lint-staged from 15.2.5 to 15.2.6 ([#136](https://github.com/dschach/github-actions/issues/136)) ([6185a13](https://github.com/dschach/github-actions/commit/6185a136999d5dd267844aa4997ff52e91227b74))
+* **lint-staged:** Update dependency lint-staged from 15.2.6 to 15.2.7 ([#137](https://github.com/dschach/github-actions/issues/137)) ([3807da4](https://github.com/dschach/github-actions/commit/3807da40665e4a3111f0a8b59f768f86ad673a03))
+* **lint-staged:** Update dependency lint-staged from 15.2.7 to 15.2.8 ([#148](https://github.com/dschach/github-actions/issues/148)) ([39f2ee2](https://github.com/dschach/github-actions/commit/39f2ee2ca3ec06b1f632fe02cd4e4e89f6bee3e7))
+* **lint-staged:** Update dependency lint-staged from 15.2.8 to 15.2.9 ([#149](https://github.com/dschach/github-actions/issues/149)) ([4517f9f](https://github.com/dschach/github-actions/commit/4517f9f41ce842b32e63f60c893f166add4713f7))
+* **lint-staged:** Update dependency lint-staged from 15.2.9 to 15.2.10 ([#151](https://github.com/dschach/github-actions/issues/151)) ([ad92a28](https://github.com/dschach/github-actions/commit/ad92a2840f0a4302e9dc0a94a4fff2c927be299c))
+* **lint-staged:** Update dependency lint-staged from 15.3.0 to 15.4.0 ([#159](https://github.com/dschach/github-actions/issues/159)) ([6ef36ec](https://github.com/dschach/github-actions/commit/6ef36ecc66cef49dcc64b2a12622843635fc3f28))
+* **lint-staged:** Update dependency lint-staged from 15.4.0 to 15.4.1 ([#160](https://github.com/dschach/github-actions/issues/160)) ([9b40a90](https://github.com/dschach/github-actions/commit/9b40a908ec8ab95fb7c450cb1fe37df822a78360))
+* **lint-staged:** Update dependency lint-staged from 15.4.1 to 15.4.2 ([#161](https://github.com/dschach/github-actions/issues/161)) ([317d2d7](https://github.com/dschach/github-actions/commit/317d2d7c239df154eb3d944904ada26c7719de45))
+* **lint-staged:** Update dependency lint-staged from 15.4.2 to 15.4.3 ([#162](https://github.com/dschach/github-actions/issues/162)) ([26b8ff7](https://github.com/dschach/github-actions/commit/26b8ff79e7978eb6636eed98c0af025ab97ee4ec))
+* **lint-staged:** Update dependency lint-staged from 15.4.3 to 16.1.0 ([#168](https://github.com/dschach/github-actions/issues/168)) ([403afe2](https://github.com/dschach/github-actions/commit/403afe28a4aa7b5b24c6a498d5661a633b0720b9))
+* **lint-staged:** Update dependency lint-staged from 16.1.0 to 16.2.3 ([#171](https://github.com/dschach/github-actions/issues/171)) ([8c13bf5](https://github.com/dschach/github-actions/commit/8c13bf5c9d2f8c755e16e6958530c2c597af8d21))
+* **lint-staged:** Update dependency lint-staged from 16.2.3 to 16.2.4 ([#176](https://github.com/dschach/github-actions/issues/176)) ([abbca41](https://github.com/dschach/github-actions/commit/abbca41139c5f2f03960c9e68bfb235e5b998e84))
+* **lint-staged:** update dependency lint-staged from 16.2.4 to 17.6.0 ([#187](https://github.com/dschach/github-actions/issues/187)) ([ccf2ab0](https://github.com/dschach/github-actions/commit/ccf2ab03386445c257333fab2367b0746b95f66f))
+* **marked:** Update dependency marked from 12.0.2 to 13.0.0 ([#138](https://github.com/dschach/github-actions/issues/138)) ([da14d4a](https://github.com/dschach/github-actions/commit/da14d4a255caed8caf968df0dab741b7e33a1964))
+* **marked:** Update dependency marked from 13.0.0 to 13.0.1 ([#139](https://github.com/dschach/github-actions/issues/139)) ([ca8574e](https://github.com/dschach/github-actions/commit/ca8574e92b0cb0f5dd8a2dbbcd97086562c2465c))
+* **marked:** Update dependency marked from 13.0.1 to 13.0.2 ([#140](https://github.com/dschach/github-actions/issues/140)) ([2212586](https://github.com/dschach/github-actions/commit/2212586ddadfc85f658a62472f6cc88eb79ac551))
+* **marked:** Update dependency marked from 13.0.2 to 13.0.3 ([#146](https://github.com/dschach/github-actions/issues/146)) ([a88b4d1](https://github.com/dschach/github-actions/commit/a88b4d1cbf96d5153ee24f6fda92634cb8ff23cc))
+* **marked:** Update dependency marked from 16.3.0 to 16.4.0 ([#175](https://github.com/dschach/github-actions/issues/175)) ([69b7e5f](https://github.com/dschach/github-actions/commit/69b7e5f103d174d70ac08d8279daa065209a87cb))
+* **marked:** update dependency marked from 16.4.0 to 16.4.2 ([61143a0](https://github.com/dschach/github-actions/commit/61143a06d8b11faa2c0529261d9be813cd7f1dd0))
+* **marked:** update dependency marked from 16.4.2 to 18.0.14 ([#188](https://github.com/dschach/github-actions/issues/188)) ([a2d1dd6](https://github.com/dschach/github-actions/commit/a2d1dd6f7d52ff5ef94bba7669a2929620825625))
+* **marked:** Update dependency marked from 18.0.14 to 18.1.0 ([#195](https://github.com/dschach/github-actions/issues/195)) ([67ab469](https://github.com/dschach/github-actions/commit/67ab469252aff6459d6a765b0426725948b4ad72))
+* **npm:** Add repository details to package.json ([5aaa74d](https://github.com/dschach/github-actions/commit/5aaa74d33e01d6c6d717fd9acc973f6f11145b53))
+* **pmd:** ignore PMD local results anywhere ([6bf4639](https://github.com/dschach/github-actions/commit/6bf4639401e93801480e7ed1c11accdea40dc74d))
+* **prettier:** Update dependency prettier from 3.2.5 to 3.3.0 ([#133](https://github.com/dschach/github-actions/issues/133)) ([87f35d4](https://github.com/dschach/github-actions/commit/87f35d448657bddb5d71faca1119d09e942da9a5))
+* **prettier:** Update dependency prettier from 3.3.0 to 3.3.1 ([#134](https://github.com/dschach/github-actions/issues/134)) ([fb6365a](https://github.com/dschach/github-actions/commit/fb6365ad16c1f403741975b054e940d7c6f1f25e))
+* **prettier:** Update dependency prettier from 3.3.1 to 3.3.2 ([#135](https://github.com/dschach/github-actions/issues/135)) ([d2c8cdb](https://github.com/dschach/github-actions/commit/d2c8cdb03ec8c04334175cd3c95234f13a4d7da2))
+* **prettier:** Update dependency prettier from 3.3.2 to 3.3.3 ([#141](https://github.com/dschach/github-actions/issues/141)) ([476725f](https://github.com/dschach/github-actions/commit/476725f754eeff9a990856146ab742a64fdc20e9))
+* **prettier:** Update dependency prettier from 3.3.3 to 3.4.0 ([#154](https://github.com/dschach/github-actions/issues/154)) ([ba54da0](https://github.com/dschach/github-actions/commit/ba54da06f5f00a7beee886b55266f62a2e7c9fe8))
+* **prettier:** Update dependency prettier from 3.4.0 to 3.4.1 ([#155](https://github.com/dschach/github-actions/issues/155)) ([5722679](https://github.com/dschach/github-actions/commit/5722679f3a179bd846c9981c374f3863476a99d2))
+* **prettier:** Update dependency prettier from 3.4.1 to 3.4.2 ([#156](https://github.com/dschach/github-actions/issues/156)) ([ccde121](https://github.com/dschach/github-actions/commit/ccde12185f697d525cdc66c885cc42ef9be2d41d))
+* **prettier:** Update dependency prettier from 3.4.2 to 3.5.0 ([#163](https://github.com/dschach/github-actions/issues/163)) ([da37aef](https://github.com/dschach/github-actions/commit/da37aefe51b4567fbe7516afb98aaa2a6a32718f))
+* **prettier:** Update dependency prettier from 3.5.0 to 3.5.1 ([#164](https://github.com/dschach/github-actions/issues/164)) ([99cd861](https://github.com/dschach/github-actions/commit/99cd86174aece2c75354ca30205ce847287e6e85))
+* **prettier:** Update dependency prettier from 3.5.1 to 3.5.2 ([#165](https://github.com/dschach/github-actions/issues/165)) ([bc5c45d](https://github.com/dschach/github-actions/commit/bc5c45dc8526e86d6c7747e3a1f1cc24add50203))
+* **prettier:** Update dependency prettier from 3.5.2 to 3.5.3 ([#166](https://github.com/dschach/github-actions/issues/166)) ([ed1b841](https://github.com/dschach/github-actions/commit/ed1b841cb0ebc9c96bc80044df8c363d803f6285))
+* **prettier:** Update dependency prettier from 3.5.3 to 3.6.2 ([#172](https://github.com/dschach/github-actions/issues/172)) ([1c3ac5d](https://github.com/dschach/github-actions/commit/1c3ac5da2e1dfa08a7b3bdecc34bda4d2f97c791))
+* **prettier:** update dependency prettier from 3.6.2 to 3.9.9 ([#181](https://github.com/dschach/github-actions/issues/181)) ([aa4f25e](https://github.com/dschach/github-actions/commit/aa4f25e143cf17fa96e50773d7da9ca58741d7ce))
+
+
+### Continuous Integration
+
+* **actions/checkout:** Update actions/checkout action from v4 to v5 ([#177](https://github.com/dschach/github-actions/issues/177)) ([3b5f982](https://github.com/dschach/github-actions/commit/3b5f982f207f160e926d35e4f63f6d0a0e572d5f))
+* **actions/checkout:** update actions/checkout action from v5 to v7.0.1 ([1b5df99](https://github.com/dschach/github-actions/commit/1b5df9923cbeb6b1b788596bf1265e2c3a4e3c97))
+* **actions/setup-node:** update actions/setup-node action from v4 to v7.0.0 ([4cab2cd](https://github.com/dschach/github-actions/commit/4cab2cda1c4dcd32d698877bf0a9bda4eb886944))
+* **codecov/codecov-action:** Update codecov/codecov-action action from v4 to v5 ([#170](https://github.com/dschach/github-actions/issues/170)) ([5d33980](https://github.com/dschach/github-actions/commit/5d33980df1f2db903bd6f7715287a84e5400c32f))
+* **codecov/codecov-action:** update codecov/codecov-action action from v5 to v7.1.1 ([acbbbc7](https://github.com/dschach/github-actions/commit/acbbbc7b56e1cc0c8fc1076b406446f4df658a88))
+* **dependabot/fetch-metadata:** update dependabot/fetch-metadata action from v2 to v3.1.0 ([999cf2c](https://github.com/dschach/github-actions/commit/999cf2c40dd63fded0b64f86a1b7cd8e2f377bd8))
+* **googleapis/release-please-action:** update googleapis/release-please-action action from v4 to v5.0.0 ([5e445b1](https://github.com/dschach/github-actions/commit/5e445b1c03e30cab35e724831c4013567cdef559))
+* **pozil/auto-assign-issue:** update pozil/auto-assign-issue action from v1 to v4.0.1 ([c4dd25b](https://github.com/dschach/github-actions/commit/c4dd25bf0cb7b303173a0d97e88fea5b8987e723))
+* **release-please:** use new action repository ([f987c3d](https://github.com/dschach/github-actions/commit/f987c3dcdb7de48119dcf8bd1bef29b35054acf1))
+* **renovate:** add labels for major, minor, and patch to local config ([#185](https://github.com/dschach/github-actions/issues/185)) ([a08b0f0](https://github.com/dschach/github-actions/commit/a08b0f05f6b52e357d2151c84bbe87fe385fe31b))
+* **renovate:** disable auto-merge ([e13fe2c](https://github.com/dschach/github-actions/commit/e13fe2c6bede886fdcd5f96cacc9970d85710353))
+* **renovate:** update  config to match most of x2od config ([785165d](https://github.com/dschach/github-actions/commit/785165d7dec78e969109f326faf9fd6515d6d0d3))
+
 ## [0.1.2](https://github.com/dschach/github-actions/compare/v0.1.1...v0.1.2) (2024-03-25)
 
 
