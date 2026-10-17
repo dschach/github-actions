@@ -3,14 +3,17 @@
 # explained at the top of:
 # https://github.com/x2od/.github/blob/main/.github/workflows/dependabot-reusable.yml
 #
-# These rules match the old LOCAL-dependabot-approve-and-auto-merge.yml:
-#   - Production dependencies: approve and merge patch updates.
-#   - Development dependencies: approve and merge minor and patch updates.
-# Indirect (transitive) dependencies are not approved or merged. To include them,
-# add "indirect" to a dependency-types list.
+# Rules, for all 3 dependency types (production, development, and indirect):
+#   - Approve and merge minor and patch updates. Major updates need a manual review.
+#   - Approve and merge security updates at all levels, including major. This needs
+#     the token secret with "Dependabot alerts: Read-only".
 #
-# 2 calls run for each PR. Only the "production" call edits the title and adds the
-# labels ("rename-title: false" on the other call).
+# 3 calls run for each PR, 1 for each dependency type. Each PR has exactly 1
+# dependency type, so exactly 1 call approves and merges it. All 3 calls edit the
+# title and add the labels ("rename-title" defaults to true). These steps give the
+# same result each time, so the extra runs do no damage.
+# The 3 calls have the same inputs now. They are separate so that each dependency
+# type can get different inputs later.
 
 name: Dependabot update
 
@@ -33,12 +36,19 @@ jobs:
     uses: x2od/.github/.github/workflows/dependabot-reusable.yml@main
     with:
       dependency-types: direct:production
+      autoapprove-major: false
+      autoapprove-minor: true
       autoapprove-patch: true
+      autoapprove-security: true
+      automerge-major: false
+      automerge-minor: true
       automerge-patch: true
+      automerge-security: true
     secrets:
       # Optional PAT. This secret does not exist in this repository yet, so the
       # workflow uses the GITHUB_TOKEN. Then the merge does not start other
-      # workflows, and the labels after an auto-merge are not added.
+      # workflows, the labels after an auto-merge are not added, and security
+      # updates are not found.
       token: ${{ secrets.DEPENDABOT_TOKEN }}
 
   development:
@@ -50,10 +60,33 @@ jobs:
     uses: x2od/.github/.github/workflows/dependabot-reusable.yml@main
     with:
       dependency-types: direct:development
-      rename-title: false
+      autoapprove-major: false
       autoapprove-minor: true
       autoapprove-patch: true
+      autoapprove-security: true
+      automerge-major: false
       automerge-minor: true
       automerge-patch: true
+      automerge-security: true
+    secrets:
+      token: ${{ secrets.DEPENDABOT_TOKEN }}
+
+  indirect:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: x2od/.github/.github/workflows/dependabot-reusable.yml@main
+    with:
+      dependency-types: indirect
+      autoapprove-major: false
+      autoapprove-minor: true
+      autoapprove-patch: true
+      autoapprove-security: true
+      automerge-major: false
+      automerge-minor: true
+      automerge-patch: true
+      automerge-security: true
     secrets:
       token: ${{ secrets.DEPENDABOT_TOKEN }}
