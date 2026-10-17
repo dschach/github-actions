@@ -1,0 +1,59 @@
+# Calls the x2od reusable Dependabot workflow. It edits the PR title, adds labels,
+# and approves and merges Dependabot PRs. All inputs and the token permissions are
+# explained at the top of:
+# https://github.com/x2od/.github/blob/main/.github/workflows/dependabot-reusable.yml
+#
+# These rules match the old LOCAL-dependabot-approve-and-auto-merge.yml:
+#   - Production dependencies: approve and merge patch updates.
+#   - Development dependencies: approve and merge minor and patch updates.
+# Indirect (transitive) dependencies are not approved or merged. To include them,
+# add "indirect" to a dependency-types list.
+#
+# 2 calls run for each PR. Only the "production" call edits the title and adds the
+# labels ("rename-title: false" on the other call).
+
+name: Dependabot update
+
+on:
+  # pull_request_target gives Dependabot PRs a writable GITHUB_TOKEN and Actions
+  # secrets. The reusable workflow never checks out code from the PR.
+  # Keep all 5 types. "closed" adds the labels after the merge.
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited, closed]
+
+permissions: {}
+
+jobs:
+  production:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    permissions:
+      contents: write # merge the PR
+      pull-requests: write # edit the title, approve, turn on auto-merge
+      issues: write # create labels and add them to the PR
+    uses: x2od/.github/.github/workflows/dependabot-reusable.yml@main
+    with:
+      dependency-types: direct:production
+      autoapprove-patch: true
+      automerge-patch: true
+    secrets:
+      # Optional PAT. This secret does not exist in this repository yet, so the
+      # workflow uses the GITHUB_TOKEN. Then the merge does not start other
+      # workflows, and the labels after an auto-merge are not added.
+      token: ${{ secrets.DEPENDABOT_TOKEN }}
+
+  development:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: x2od/.github/.github/workflows/dependabot-reusable.yml@main
+    with:
+      dependency-types: direct:development
+      rename-title: false
+      autoapprove-minor: true
+      autoapprove-patch: true
+      automerge-minor: true
+      automerge-patch: true
+    secrets:
+      token: ${{ secrets.DEPENDABOT_TOKEN }}

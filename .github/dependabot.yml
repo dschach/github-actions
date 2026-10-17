@@ -1,0 +1,32 @@
+# Dependabot configuration. All options:
+# https://docs.github.com/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+#
+# Renovate opens the version update PRs in this repository. Thus, each ecosystem sets
+# open-pull-requests-limit: 0, which stops Dependabot version update PRs. This limit
+# does not apply to security updates, so Dependabot still opens security update PRs
+# (when "Dependabot security updates" is on in the repository settings).
+#
+# The commit-message prefixes give Conventional Commits PR titles without a scope,
+# for example "build: bump x from 1.0.0 to 1.0.1". The dependabot-update.yml workflow
+# then puts the package name in the scope: "build(x): bump x from 1.0.0 to 1.0.1".
+
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/' # Location of package.json
+    commit-message:
+      prefix: 'deps' # production dependencies
+      prefix-development: 'build' # development dependencies
+    rebase-strategy: 'auto'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 0 # security updates only
+
+  - package-ecosystem: 'github-actions'
+    directory: '/' # Dependabot reads the workflows in .github/workflows
+    commit-message:
+      prefix: 'ci'
+    rebase-strategy: 'auto'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 0 # security updates only
