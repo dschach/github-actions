@@ -18,8 +18,8 @@
 name: Dependabot update
 
 on:
-  # pull_request_target gives Dependabot PRs a writable GITHUB_TOKEN and Actions
-  # secrets. The reusable workflow never checks out code from the PR.
+  # pull_request_target gives Dependabot PRs a writable GITHUB_TOKEN. The reusable
+  # workflow never checks out code from the PR.
   # Keep all 5 types. "closed" adds the labels after the merge.
   pull_request_target:
     types: [opened, reopened, synchronize, edited, closed]
@@ -45,10 +45,12 @@ jobs:
       automerge-patch: true
       automerge-security: true
     secrets:
-      # Optional PAT. This secret does not exist in this repository yet, so the
-      # workflow uses the GITHUB_TOKEN. Then the merge does not start other
-      # workflows, the labels after an auto-merge are not added, and security
-      # updates are not found.
+      # Optional PAT. This secret does not exist in this repository yet. Store the PAT
+      # 2 times, with this same name: as a Dependabot secret (runs that Dependabot
+      # starts can read only Dependabot secrets) and as an Actions secret (for the run
+      # after the merge). Without it, the workflow uses the GITHUB_TOKEN. Then the
+      # merge does not start other workflows, the labels after an auto-merge are not
+      # added, and security updates are not found.
       token: ${{ secrets.DEPENDABOT_TOKEN }}
 
   development:
