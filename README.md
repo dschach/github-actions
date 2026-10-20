@@ -47,4 +47,4 @@ Events and Actions
 
 # Configs
 
-- Renovate [shareable config file](.github/renovate.json5)
+- Renovate: this repository extends the shared preset [`github>x2od/.github:renovate.jsonc`](https://github.com/x2od/.github/blob/main/renovate.jsonc)
